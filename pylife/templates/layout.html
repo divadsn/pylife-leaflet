@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="author" content="David Sn, Encryptize, and GitHub contributors">
+    <meta name="generator" content="pylife-leaflet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css">
+
+    <!-- Leaflet.js -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet.css') }}">
+
+    <!-- Mapa PYLife.pl -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54671102-5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        gtag('js', new Date());
+        gtag('config', 'UA-54671102-5');
+    </script>
+</head>
+
+<body>
+    <!-- Site navigation -->
+    <header class="navbar navbar-expand-md navbar-dark sticky-top bg-dark shadow">
+        <h1 class="navbar-brand mb-0 mr-4"><i class="fa fa-gamepad fa-fw"></i> Mapa PYLife.pl</h1>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <!-- Search form -->
+            <form class="form-inline my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" id="search" type="text" name="search" placeholder="Szukaj..." autocomplete="off">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-light" id="submit" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Links -->
+            <ul class="navbar-nav ml-auto visible-md">
+                <!-- GitHub repo -->
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/divadsn/pylife-leaflet"><i class="fa fa-github fa-fw"></i> GitHub</a>
+                </li>
+
+                <!-- Twitter social profile -->
+                <li class="nav-item">
+                    <a class="nav-link" href="https://twitter.com/divadsn"><i class="fa fa-twitter fa-fw"></i> Twitter</a>
+                </li>
+
+                <!-- Panel Play Your Life -->
+                <li class="nav-item">
+                    <a class="nav-link" href="http://panel.pylife.pl"><i class="fa fa-sign-out fa-fw"></i> Panel PYLife</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Leaflet.js -->
+    <script src="{{ url_for('static', filename='js/leaflet.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/leaflet-rastercoords.js') }}"></script>
+
+    <!-- Mapa PYLife.pl -->
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+</body>
+
+</html>

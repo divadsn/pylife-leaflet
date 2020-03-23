@@ -1,26 +1,72 @@
-<!doctype html>
-<html lang="pl">
+{% extends "layout.html" %}
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Interaktywna mapa serwera Play Your Life z wyszukiwarką">
-    <meta name="author" content="David Sn, Encryptize">
-    <meta name="generator" content="pylife-leaflet">
+{% block title %}Mapa PYLife.pl{% endblock %}
+{% block description %}Interaktywna mapa serwera Play Your Life z wyszukiwarką miejsc{% endblock %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css">
+{% block content %}
+    <!-- Page content -->
+    <main style="height: calc(100vh - 56px);">
+        <div class="h-100" id="map"></div>
+    </main>
 
-    <!-- Page related CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+    <!-- Welcome modal -->
+    <div class="modal fade" data-backdrop="static" id="welcome" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <!-- Logo Play Your Life -->
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" class="img-fluid mb-2" alt="Logo Play Your Life">
+                    <h2>Witaj na interaktywnej mapie Play Your Life!</h2>
 
-    <title>Mapa Pylife.pl</title>
-</head>
+                    <hr>
 
-<body class="">
+                    <!-- Feature: Search engine -->
+                    <h5>Sprawdź Twój cel na mapie oraz zobacz dostępne domki w wybranej okolicy.</h5>
+                    <p class="mb-4">
+                        Wyszukiwarka w górnym pasku pomoże Ci znaleźć każdy zakątek tej mapy, wystarczy wpisać pierwszą część nazwy celu, a mapa pokaże Ci wybrany obszar na mapie.
+                        Ułatwi to nie tylko początkującym graczom poruszanie się po San Andreas, ale także pomoże graczom w pracy na taksówce lub kurierce.
+                    </p>
 
-</body>
+                    <!-- Feature: Regular updates -->
+                    <h5>Jak są regularnie aktualizowane informacje o domkach?</h5>
+                    <p class="mb-4">
+                        Serwer aktualizuje dane regularnie co 5 minut i co pełną godzinę dla wszystkich domów, ze szczegółową aktualizacją tylko dla domów, których właściciele ostatnio się zmienili.
+                    </p>
 
-</html>
+                    <!-- About project: Authors -->
+                    <h5>Autorzy i użyte technologie</h5>
+                    <p>
+                        Mapa PYLife.pl, wersja 1.0 beta<br />
+                        Projekt wspólny graczy <a href="http://panel.pylife.pl/gracz/511136#xDivadz" target="_blank">xDivadz</a> (David Sn) i <a href="http://panel.pylife.pl/gracz/503531#Encryptize" target="_blank">Encryptize</a>.
+                    </p>
+                    <p>
+                        Dane lokalizacyjne z gry MTA zostały wykorzystane na <a href="https://github.com/multitheftauto/mtasa-blue/blob/master/LICENSE" target="_blank">licencji open-source</a> GPLv3.
+                    </p>
+
+                    <!-- About project: Used technologies -->
+                    <h6>Strona została zbudowana przy użyciu technologii:</h6>
+                    <ul>
+                        <li>Python 3.7</li>
+                        <li>Flask</li>
+                        <li>PostgreSQL</li>
+                        <li>Leaflet.js</li>
+                        <li>jQuery</li>
+                    </ul>
+
+                    <!-- GDPR / Cookie consent -->
+                    <p class="mb-0">
+                        Ta strona korzysta z ciasteczek aby świadczyć usługi na najwyższym poziomie.<br />
+                        Dalsze korzystanie ze strony oznacza, że zgadzasz się na ich użycie.
+                    </p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="togglemusic" type="button">Wyłącz muzykę</button>
+                    <button class="btn btn-success" id="accept" type="button">Akceptuję</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
