@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 
 # Init app
@@ -23,3 +23,8 @@ def index():
 @app.route("/favicon.ico")
 def favicon():
     return app.send_static_file("images/favicon.png")
+
+
+@app.route("/assets/<path:filename>")
+def get_asset(filename):
+    return send_from_directory("assets/", filename)
