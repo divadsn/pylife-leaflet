@@ -3,7 +3,6 @@ import re
 import json
 import urllib.request
 
-from datetime import datetime
 from sqlalchemy import exc
 
 from shapely.geometry import box
@@ -120,7 +119,7 @@ def generate_houses():
     for index, house in houses.items():
         print(f"Adding house \"{house['name']}\" with ID {index} to database...")
         db.session.add(House(id=index, x=house["x"], y=house["y"], name=house["name"], location=house["location"],
-                             owner=house["owner"], price=house["price"], expiry=house["expiry"], last_update=datetime.utcnow()))
+                             owner=house["owner"], price=house["price"], expiry=house["expiry"]))
 
 
 if __name__ == "__main__":
