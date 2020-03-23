@@ -1,0 +1,168 @@
+1,Aldea Malvada
+2,Angel Pine
+3,Arco del Oeste
+4,Avispa Country Club
+5,Back o Beyond
+6,Battery Point
+7,Bayside
+8,Bayside Marina
+9,Bayside Tunnel
+10,Beacon Hill
+11,Blackfield
+12,Blackfield Chapel
+13,Blackfield Intersection
+14,Blueberry
+15,Blueberry Acres
+16,Bone County
+17,Caligula's Palace
+18,Calton Heights
+19,Chinatown
+20,City Hall
+21,Come-A-Lot
+22,Commerce
+23,Conference Center
+24,Cranberry Station
+25,Creek
+26,Dillimore
+27,Doherty
+28,Downtown
+29,Downtown Los Santos
+30,East Beach
+31,Easter Basin
+32,Easter Bay Airport
+33,Easter Bay Chemicals
+34,Easter Tunnel
+35,East Los Santos
+36,El Castillo del Diablo
+37,El Corona
+38,El Quebrados
+39,Esplanade East
+40,Esplanade North
+41,Fallen Tree
+42,Fallow Bridge
+43,Fern Ridge
+44,Financial
+45,Fisher's Lagoon
+46,Flint County
+47,Flint Intersection
+48,Flint Range
+49,Flint Water
+50,Fort Carson
+51,Foster Valley
+52,Frederick Bridge
+53,Gant Bridge
+54,Ganton
+55,Garcia
+56,Garver Bridge
+57,Glen Park
+58,Greenglass College
+59,Green Palms
+60,Hampton Barns
+61,Hankypanky Point
+62,Harry Gold Parkway
+63,Hashbury
+64,Hilltop Farm
+65,Hunter Quarry
+66,Idlewood
+67,Jefferson
+68,Julius Thruway East
+69,Julius Thruway North
+70,Julius Thruway South
+71,Julius Thruway West
+72,Juniper Hill
+73,Juniper Hollow
+74,K.A.C.C. Military Fuels
+75,Kincaid Bridge
+76,King's
+77,Las Barrancas
+78,Las Brujas
+79,Las Colinas
+80,Las Payasadas
+81,Last Dime Motel
+82,Las Venturas
+83,Las Venturas Airport
+84,Leafy Hollow
+85,Lil' Probe Inn
+86,Linden Side
+87,Linden Station
+88,Little Mexico
+89,Los Flores
+90,Los Santos
+91,Los Santos Inlet
+92,Los Santos International
+93,LVA Freight Depot
+94,Marina
+95,Market
+96,Market Station
+97,Martin Bridge
+98,Missionary Hill
+99,Montgomery
+100,Montgomery Intersection
+101,Mount Chiliad
+102,Mulholland
+103,Mulholland Intersection
+104,North Rock
+105,Ocean Docks
+106,Ocean Flats
+107,Octane Springs
+108,Old Venturas Strip
+109,Palisades
+110,Palomino Creek
+111,Paradiso
+112,Pershing Square
+113,Pilgrim
+114,Pilson Intersection
+115,Pirates in Men's Pants
+116,Playa del Seville
+117,Prickle Pine
+118,Queens
+119,Randolph Industrial Estate
+120,Red County
+121,Redsands East
+122,Redsands West
+123,Regular Tom
+124,Restricted Area
+125,Richman
+126,Robada Intersection
+127,Roca Escalante
+128,Rockshore East
+129,Rockshore West
+130,Rodeo
+131,Royal Casino
+132,San Andreas Sound
+133,San Fierro
+134,San Fierro Bay
+135,Santa Flora
+136,Santa Maria Beach
+137,Shady Cabin
+138,Shady Creeks
+139,Sherman Reservoir
+140,Sobell Rail Yards
+141,Spinybed
+142,Starfish Casino
+143,Temple
+144,'The Big Ear'
+145,The Camel's Toe
+146,The Clown's Pocket
+147,The Emerald Isle
+148,The Farm
+149,The Four Dragons Casino
+150,The High Roller
+151,The Mako Span
+152,The Panopticon
+153,The Pink Swan
+154,The Sherman Dam
+155,The Strip
+156,The Visage
+157,Tierra Robada
+158,Unity Station
+159,Valle Ocultado
+160,Verdant Bluffs
+161,Verdant Meadows
+162,Verona Beach
+163,Vinewood
+164,Whetstone
+165,Whitewood Estates
+166,Willowfield
+167,Yellow Bell Golf Course
+168,Yellow Bell Station

@@ -5,19 +5,9 @@ from sqlalchemy.sql import func
 class Zone(db.Model):
     __tablename__= "zones"
 
-    id = db.Column(db.Integer, nullable=False)
-    x1 = db.Column(db.Integer, nullable=False)
-    y1 = db.Column(db.Integer, nullable=False)
-    x2 = db.Column(db.Integer, nullable=False)
-    y2 = db.Column(db.Integer, nullable=False)
-    name = db.Column(db.Text, nullable=False)
-
-
-class ZoneName(db.Model):
-    __tablename__ = "zonenames"
-
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.Text, nullable=False)
+    points = db.Column(db.Text, nullable=False)
 
 
 class House(db.Model):
