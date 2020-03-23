@@ -1,7 +1,5 @@
 flask
-flask-assets
 flask-sqlalchemy
 psycopg2-binary
-pillow
 shapely
 waitress
