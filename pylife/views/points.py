@@ -1,46 +1,26 @@
 from flask import Blueprint, jsonify, abort
 
-from shapely.geometry import box
-from shapely.ops import cascaded_union
-
-from pylife.models import Zone, ZoneName, House
+from pylife.models import Zone, House
+from pylife.utils import parse_zone
 
 mod = Blueprint("points", __name__, url_prefix="/points")
 
 
 @mod.route("zones", methods=["GET"])
 def get_zones():
-    zones = Zone.query.order_by(Zone.name).all()
-    polygons = {}
+    zones = Zone.query.order_by(Zone.id).all()
+    data = []
 
     if not zones:
         # something is wrong with the database
         return abort(503)
 
     for zone in zones:
-        polygon = box(3000 + zone.x1, 3000 - zone.y1, 3000 + zone.x2, 3000 - zone.y2)
-
-        if zone.name in polygons:
-            polygons[zone.name].append(polygon)
-        else:
-            polygons[zone.name] = [polygon]
-
-    # contains id mapping for search
-    names = ZoneName.query.all()
-    data = []
-
-    for name in names:
-        union = cascaded_union(polygons[name.name])
-
-        if union.geom_type == "MultiPolygon":
-            coordinates = [[point for point in polygon.exterior.coords] for polygon in list(union)]
-        else:
-            coordinates = [point for point in union.exterior.coords]
-
+        points = parse_zone(zone.points)
         data.append({
-            "id": name.id,
-            "name": name.name,
-            "coordinates": coordinates
+            "id": zone.id,
+            "name": zone.name,
+            "points": points
         })
 
     return jsonify({"data": data})
@@ -58,9 +38,9 @@ def get_houses():
     for house in houses:
         data.append({
             "id": house.id,
+            "name": house.name,
             "x": 3000 + house.x,
             "y": 3000 - house.y,
-            "name": house.name,
             "location": house.location,
             "owner": house.owner,
             "price": house.price,

@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from sqlalchemy import func
 
-from pylife.models import ZoneName
+from pylife.models import Zone
 
 mod = Blueprint("search", __name__)
 
@@ -10,7 +10,7 @@ mod = Blueprint("search", __name__)
 def search():
     query = request.args.get("q", "")
 
-    zones = ZoneName.query.filter(func.lower(ZoneName.name).like(func.lower(f"%{query}%"))).limit(10).all()
+    zones = Zone.query.filter(func.lower(Zone.name).like(func.lower(f"%{query}%"))).limit(10).all()
     data = []
 
     for zone in zones:

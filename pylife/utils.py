@@ -1,15 +1,11 @@
-import datetime
-import pytz
+import json
 
 
-def parse_date(date):
-    tz = pytz.timezone("Europe/Warsaw")
-    return tz.localize(datetime.datetime.strptime(date, "%Y-%m-%d"))
+def parse_zone(data: str):
+    points = json.loads(data)
 
+    if len(points[0]) == 2:
+        points = [points]
 
-def is_float(value):
-    try:
-        float(value)
-        return True
-    except ValueError:
-        return False
+    points = [[{"x": 3000 + point[0], "y": 3000 - point[1]} for point in points] for points in points]
+    return points[0] if len(points) == 1 else points
