@@ -22,10 +22,10 @@ def main():
     try:
         db.drop_all()
     except exc.SQLAlchemyError:
-        print("Creating new tables in database...")
         pass
 
     # Creating tables
+    print("Creating new tables in database...")
     db.create_all()
 
     # Load zone names mapping
