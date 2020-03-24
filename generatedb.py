@@ -77,6 +77,7 @@ def generate_zones():
     for index, zone in zones.items():
         union = cascaded_union(zone["polygons"])
 
+        # Check if union has more than one polygon
         if union.geom_type == "MultiPolygon":
             points = [[(int(point[0]), int(point[1])) for point in polygon.exterior.coords] for polygon in list(union)]
         else:
@@ -114,6 +115,7 @@ def generate_houses():
                 "expiry": None
             }
 
+    # Sort dict items by id ascending
     houses = {k: houses[k] for k in sorted(houses)}
 
     for index, house in houses.items():
