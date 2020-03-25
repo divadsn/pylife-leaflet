@@ -14,8 +14,8 @@ services:
       SECRET_KEY: ${SECRET_KEY}
       SQLALCHEMY_DATABASE_URI: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}"
 
-  update:
-    image: divadsn/pylife-update
+  cron:
+    image: divadsn/pylife-cron
     restart: always
     environment:
       MAILTO: ${MAILTO}
