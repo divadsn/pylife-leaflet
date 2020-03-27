@@ -1,5 +1,8 @@
 flask
+flask-assets
 flask-sqlalchemy
 psycopg2-binary
+cssmin
+jsmin
 shapely
 waitress

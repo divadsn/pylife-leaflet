@@ -13,11 +13,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fork-awesome.min.css') }}">
 
-    <!-- Leaflet.js -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet.css') }}">
-
     <!-- Mapa PYLife.pl -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+    <link rel="stylesheet" href="{% assets 'css_map' %}{{ ASSET_URL }}{% endassets %}">
 
     <title>{% block title %}{% endblock %}</title>
 
@@ -76,15 +73,11 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Bootstrap JS -->
-    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-
-    <!-- Leaflet.js -->
-    <script src="{{ url_for('static', filename='js/leaflet.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/leaflet-rastercoords.js') }}"></script>
+    <script type="text/javascript"  src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    <script type="text/javascript"  src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Mapa PYLife.pl -->
-    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+    <script type="text/javascript" src="{% assets 'js_map' %}{{ ASSET_URL }}{% endassets %}"></script>
 </body>
 
 </html>
