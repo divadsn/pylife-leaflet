@@ -10,7 +10,7 @@ services:
     environment:
       HOST: "0.0.0.0"
       PORT: 8080
-      DEBUG: False
+      DEBUG: "False"
       SECRET_KEY: ${SECRET_KEY}
       SQLALCHEMY_DATABASE_URI: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}"
 
@@ -18,7 +18,7 @@ services:
     image: divadsn/pylife-cron
     restart: always
     environment:
-      MAILTO: ${MAILTO}
+      TZ: ${TZ}
       DATABASE_URI: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}"
 
   postgres:
@@ -29,7 +29,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
-      - posgres_vol:/var/lib/postgresql/data
+      - postgres_vol:/var/lib/postgresql/data
 
 volumes:
   postgres_vol:
