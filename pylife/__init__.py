@@ -25,6 +25,6 @@ def favicon():
     return app.send_static_file("images/favicon.png")
 
 
-@app.route("/assets/<path:filename>")
-def get_asset(filename):
-    return send_from_directory("assets/", filename)
+@app.route("/tiles/<z>/<x>/<y>.png")
+def get_tilemap(z, x, y):
+    return send_from_directory(f"tiles/{z}/{x}/", f"{y}.png")
