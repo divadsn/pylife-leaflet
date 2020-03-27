@@ -9,8 +9,8 @@ var cityNameList = [
     "Los Santos"
 ]
 
-var icon_31 = L.icon({ iconUrl: './icons/Icon_31.png', iconSize: [16, 16] });
-var icon_32 = L.icon({ iconUrl: './icons/Icon_32.png', iconSize: [16, 16] });
+var icon_31 = L.icon({ iconUrl: './static/icons/Icon_31.png', iconSize: [16, 16] });
+var icon_32 = L.icon({ iconUrl: './static/icons/Icon_32.png', iconSize: [16, 16] });
 
 var img = [
     6000,  // original width of image (here from `example/karta.jpg`)

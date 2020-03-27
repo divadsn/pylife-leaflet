@@ -2,7 +2,7 @@ from flask import Flask, render_template, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 
 # Init app
-app = Flask(__name__, instance_relative_config=False, static_url_path="")
+app = Flask(__name__, instance_relative_config=False)
 app.config.from_object("config")
 
 # Load database
