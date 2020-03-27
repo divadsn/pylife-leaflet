@@ -6,7 +6,7 @@ import urllib.request
 from sqlalchemy import exc
 
 from shapely.geometry import box
-from shapely.ops import cascaded_union
+from shapely.ops import unary_union
 from bs4 import BeautifulSoup
 
 from pylife import db
@@ -75,7 +75,7 @@ def generate_zones():
                 zones[zone_id]["polygons"].append(box(int(zone[0]), int(zone[1]), int(zone[2]), int(zone[3])))
 
     for index, zone in zones.items():
-        union = cascaded_union(zone["polygons"])
+        union = unary_union(zone["polygons"])
 
         # Check if union has more than one polygon
         if union.geom_type == "MultiPolygon":
