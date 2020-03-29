@@ -16,6 +16,13 @@
     <!-- Mapa PYLife.pl -->
     <link rel="stylesheet" href="{% assets 'css_map' %}{{ ASSET_URL }}{% endassets %}">
 
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+    <link rel="shortcut icon" href="{ url_for('static', filename='favicon/favicon.ico') }}">
+    <meta name="theme-color" content="#343a40">
+
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
