@@ -32,7 +32,9 @@
 <body>
     <!-- Site navigation -->
     <header class="navbar navbar-expand-md navbar-dark sticky-top bg-dark shadow">
-        <h1 class="navbar-brand mb-0 mr-4"><i class="fa fa-gamepad fa-fw"></i> Mapa PYLife.pl</h1>
+        <h1 class="navbar-brand mb-0 mr-3">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" width="auto" height="30" alt="Mapa PY.Life">
+        </h1>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -42,7 +44,7 @@
             <!-- Search form -->
             <form class="form-inline my-2 my-md-0">
                 <div class="input-group">
-                    <input class="form-control" id="search" type="text" name="search" placeholder="Szukaj..." autocomplete="off">
+                    <input class="form-control" id="search" type="text" name="search" placeholder="Szukaj na mapie..." autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-outline-light" id="submit" type="submit"><i class="fa fa-search"></i></button>
                     </div>
