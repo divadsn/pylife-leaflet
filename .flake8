@@ -1,0 +1,10 @@
+[flake8]
+ignore = D203
+exclude =
+    .git,
+    __pycache__,
+    static,
+    tiles,
+    gdal2tiles.py
+max-line-length = 127
+max-complexity = 10

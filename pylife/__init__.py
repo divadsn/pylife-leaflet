@@ -9,12 +9,13 @@ app.config.from_object("config")
 # Init web assets
 assets = Environment(app)
 assets.register("css_map", Bundle("css/leaflet.css", "css/map.css", filters="cssmin", output="css/map.bundle.css"))
-assets.register("js_map", Bundle("js/leaflet.js", "js/leaflet-rastercoords.js", "js/map.js", filters="jsmin", output="js/map.bundle.js"))
+assets.register("js_map", Bundle("js/leaflet.js", "js/leaflet-rastercoords.js", "js/map.js",
+                                 filters="jsmin", output="js/map.bundle.js"))
 
 # Load database
 db = SQLAlchemy(app)
 
-from pylife.views import points, search, lookup
+from pylife.views import points, search, lookup  # noqa: E402
 
 # Register routes
 app.register_blueprint(points.mod)

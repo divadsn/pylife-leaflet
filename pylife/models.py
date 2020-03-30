@@ -3,7 +3,7 @@ from sqlalchemy.sql import func
 
 
 class Zone(db.Model):
-    __tablename__= "zones"
+    __tablename__ = "zones"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.Text, nullable=False)
