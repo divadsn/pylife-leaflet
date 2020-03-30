@@ -14,11 +14,12 @@ assets.register("js_map", Bundle("js/leaflet.js", "js/leaflet-rastercoords.js", 
 # Load database
 db = SQLAlchemy(app)
 
-from pylife.views import points, search
+from pylife.views import points, search, lookup
 
 # Register routes
 app.register_blueprint(points.mod)
 app.register_blueprint(search.mod)
+app.register_blueprint(lookup.mod)
 
 
 @app.route("/")

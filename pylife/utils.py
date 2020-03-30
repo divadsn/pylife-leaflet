@@ -1,5 +1,17 @@
 import json
 
+# https://github.com/multitheftauto/mtasa-blue/blob/master/Shared/mods/deathmatch/logic/CZoneNames.cpp#L14-L22
+CITY_NAMES = [
+    "Tierra Robada",
+    "Bone County",
+    "Las Venturas",
+    "San Fierro",
+    "Red County",
+    "Whetstone",
+    "Flint County",
+    "Los Santos",
+]
+
 
 def parse_zone(data: str, is_raw: bool):
     points = json.loads(data)
