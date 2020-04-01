@@ -8,9 +8,10 @@ app.config.from_object("config")
 
 # Init web assets
 assets = Environment(app)
-assets.register("css_map", Bundle("css/leaflet.css", "css/map.css", filters="cssmin", output="css/map.bundle.css"))
-assets.register("js_map", Bundle("js/leaflet.js", "js/leaflet-rastercoords.js", "js/map.js",
-                                 filters="jsmin", output="js/map.bundle.js"))
+assets.register("css_map", Bundle("css/leaflet.css", "css/leaflet-responsive-popup.css", "css/map.css",
+                                  filters="cssmin", output="css/map.bundle.css"))
+assets.register("js_map", Bundle("js/leaflet.js", "js/leaflet-rastercoords.js", "js/leaflet-responsive-popup.js",
+                                 "js/dayjs.min.js", "js/map.js", filters="jsmin", output="js/map.bundle.js"))
 
 # Load database
 db = SQLAlchemy(app)
