@@ -31,7 +31,7 @@ def index():
 
 @app.route("/favicon.ico")
 def favicon():
-    return app.send_static_file("images/favicon.ico")
+    return app.send_static_file("favicon/favicon.ico")
 
 
 @app.route("/tiles/<z>/<x>/<y>.png")
