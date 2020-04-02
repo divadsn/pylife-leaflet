@@ -9,7 +9,7 @@ map.setMaxZoom(rc.zoomLevel());
 
 // all coordinates need to be unprojected using the `unproject` method
 // set the view in the lower right edge of the image
-map.setView(rc.unproject([3000, 3000]), 4);
+map.setView(rc.unproject([3000, 3000]), 3);
 
 // the tile layer containing the image generated with gdal2tiles.py
 L.tileLayer('./tiles/{z}/{x}/{y}.png', {
