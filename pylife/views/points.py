@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, abort
 
-from pylife.models import Zone, House
+from pylife.models import Zone, House, Blip
 from pylife.utils import parse_zone
 
 mod = Blueprint("points", __name__, url_prefix="/points")
@@ -54,3 +54,28 @@ def get_houses():
 
     last_update = House.query.with_entities(House.last_update).order_by(House.last_update.desc()).first()[0]
     return jsonify({"data": data, "last_update": last_update})
+
+
+@mod.route("blips", methods=["GET"])
+def get_blips():
+    blips = Blip.query.order_by(Blip.id).all()
+    data = []
+
+    is_raw = "raw" in request.args
+
+    if not blips:
+        # something is wrong with the database
+        return abort(503)
+
+    for blip in blips:
+        data.append({
+            "id": blip.id,
+            "name": blip.name,
+            "x": blip.x if is_raw else 3000 + blip.x,
+            "y": blip.y if is_raw else 3000 - blip.y,
+            "location": blip.location,
+            "description": blip.description,
+            "icon": blip.icon
+        })
+
+    return jsonify({"data": data})
