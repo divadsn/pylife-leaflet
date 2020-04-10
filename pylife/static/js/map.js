@@ -5,7 +5,7 @@ var map = L.map('map');
 var rc = new L.RasterCoords(map, [6000, 6000]);
 
 // set max zoom Level (might be `x` if gdal2tiles was called with `-z 0-x` option)
-map.setMaxZoom(rc.zoomLevel());
+map.setMaxZoom(6);
 
 // all coordinates need to be unprojected using the `unproject` method
 // set the view in the lower right edge of the image
