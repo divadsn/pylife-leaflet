@@ -10,7 +10,7 @@ from shapely.ops import unary_union
 from bs4 import BeautifulSoup
 
 from pylife import db
-from pylife.models import Zone, House
+from pylife.models import Zone, House, Blip
 
 MTA_ZONENAMES = "https://github.com/multitheftauto/mtasa-blue/raw/master/Shared/mods/deathmatch/logic/CZoneNames.cpp"
 ZONE_REGEX = r"{(-?\d+), (-?\d+), (?:-?\d+), (-?\d+), (-?\d+), (?:-?\d+), \"(.*?)\"}"
@@ -34,6 +34,7 @@ def main():
     # Generating data
     generate_zones()
     generate_houses()
+    generate_blips()
 
     # Saving new data to database
     db.session.commit()
@@ -122,6 +123,30 @@ def generate_houses():
         print(f"Adding house \"{house['name']}\" with ID {index} to database...")
         db.session.add(House(id=index, x=house["x"], y=house["y"], name=house["name"], location=house["location"],
                              owner=house["owner"], price=house["price"], expiry=house["expiry"]))
+
+
+def generate_blips():
+    print("Generating table for blips...")
+
+    with open("blips.txt") as f:
+        blips = []
+
+        for line in f.readlines():
+            line = line.rstrip()
+            if line == "" or line.startswith("#"):
+                continue
+
+            blip = line.split(",")
+            blips.append({
+                "x": int(float(blip[0])),
+                "y": int(float(blip[1])),
+                "name": blip[2],
+                "icon": blip[3]
+            })
+
+    for blip in blips:
+        print(f"Adding blip \"{blip['name']}\" at ({blip['x']}, {blip['y']}) to database...")
+        db.session.add(Blip(x=blip["x"], y=blip["y"], name=blip["name"], icon=blip["icon"]))
 
 
 if __name__ == "__main__":
