@@ -49,7 +49,7 @@ def is_float(value):
 
 
 def load_zone_names():
-    with open("zonenames.txt") as f:
+    with open("data/zonenames.txt") as f:
         for line in f.readlines():
             zone_id = int(line.split(",")[0])
             zones[zone_id] = {
@@ -128,7 +128,7 @@ def generate_houses():
 def generate_blips():
     print("Generating table for blips...")
 
-    with open("blips.txt") as f:
+    with open("data/blips.txt") as f:
         blips = []
 
         for line in f.readlines():
