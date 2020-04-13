@@ -10,7 +10,7 @@ from shapely.ops import unary_union
 from bs4 import BeautifulSoup
 
 from pylife import db
-from pylife.models import Zone, House, Blip
+from pylife.models import Zone, House, Blip, Event  # noqa: F401
 
 MTA_ZONENAMES = "https://github.com/multitheftauto/mtasa-blue/raw/master/Shared/mods/deathmatch/logic/CZoneNames.cpp"
 ZONE_REGEX = r"{(-?\d+), (-?\d+), (?:-?\d+), (-?\d+), (-?\d+), (?:-?\d+), \"(.*?)\"}"
