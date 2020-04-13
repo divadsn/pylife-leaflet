@@ -32,3 +32,17 @@ class Blip(db.Model):
     y = db.Column(db.Integer, nullable=False)
     name = db.Column(db.Text, nullable=False)
     icon = db.Column(db.Text, nullable=False)
+
+
+class Event(db.Model):
+    __tablename__ = "events"
+
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    x = db.Column(db.Integer, nullable=False)
+    y = db.Column(db.Integer, nullable=False)
+    name = db.Column(db.Text, nullable=False)
+    location = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    start_date = db.Column(db.DateTime, nullable=True)
+    end_date = db.Column(db.DateTime, nullable=True)
+    post_url = db.Column(db.Text, nullable=False)

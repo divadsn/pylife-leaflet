@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, abort
 
-from pylife.models import Zone, House, Blip
+from pylife.models import Zone, House, Blip, Event
 from pylife.utils import parse_zone
 
 mod = Blueprint("points", __name__, url_prefix="/points")
@@ -74,6 +74,33 @@ def get_blips():
             "x": blip.x if is_raw else 3000 + blip.x,
             "y": blip.y if is_raw else 3000 - blip.y,
             "icon": blip.icon
+        })
+
+    return jsonify({"data": data})
+
+
+@mod.route("events", methods=["GET"])
+def get_events():
+    events = Event.query.order_by(Blip.id).all()
+    data = []
+
+    is_raw = "raw" in request.args
+
+    if not events:
+        # something is wrong with the database
+        return abort(503)
+
+    for event in events:
+        data.append({
+            "id": event.id,
+            "name": event.name,
+            "x": event.x if is_raw else 3000 + event.x,
+            "y": event.y if is_raw else 3000 - event.y,
+            "location": event.location,
+            "description": event.description,
+            "start_date": event.start_date,
+            "end_date": event.end_date,
+            "post_url": event.post_url
         })
 
     return jsonify({"data": data})
