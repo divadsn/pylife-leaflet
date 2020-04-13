@@ -73,8 +73,6 @@ def get_blips():
             "name": blip.name,
             "x": blip.x if is_raw else 3000 + blip.x,
             "y": blip.y if is_raw else 3000 - blip.y,
-            "location": blip.location,
-            "description": blip.description,
             "icon": blip.icon
         })
 

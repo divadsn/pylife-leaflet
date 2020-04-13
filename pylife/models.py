@@ -31,6 +31,4 @@ class Blip(db.Model):
     x = db.Column(db.Integer, nullable=False)
     y = db.Column(db.Integer, nullable=False)
     name = db.Column(db.Text, nullable=False)
-    location = db.Column(db.Text, nullable=False)
-    description = db.Column(db.Text, nullable=False)
     icon = db.Column(db.Text, nullable=False)
