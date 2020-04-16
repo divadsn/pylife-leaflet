@@ -81,7 +81,7 @@ def get_blips():
 
 @mod.route("events", methods=["GET"])
 def get_events():
-    events = Event.query.order_by(Blip.id).all()
+    events = Event.query.order_by(Event.id).all()
     data = []
 
     is_raw = "raw" in request.args
