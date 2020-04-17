@@ -7,6 +7,7 @@ class Zone(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text, nullable=False)
     points = db.Column(db.Text, nullable=False)
 
 

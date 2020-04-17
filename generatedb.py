@@ -53,7 +53,8 @@ def load_zone_names():
         for line in f.readlines():
             zone_id = int(line.split(",")[0])
             zones[zone_id] = {
-                "name": line.split(",")[1].rstrip(),
+                "name": line.split(",")[1],
+                "description": line.split(",")[2].rstrip(),
                 "polygons": []
             }
 
@@ -85,7 +86,7 @@ def generate_zones():
             points = [(int(point[0]), int(point[1])) for point in union.exterior.coords]
 
         print(f"Adding zone \"{zone['name']}\" with ID {index} to database...")
-        db.session.add(Zone(id=index, name=zone["name"], points=json.dumps(points)))
+        db.session.add(Zone(id=index, name=zone["name"], description=zone["description"], points=json.dumps(points)))
 
 
 def generate_houses():

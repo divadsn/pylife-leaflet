@@ -22,6 +22,7 @@ def get_zones():
         data.append({
             "id": zone.id,
             "name": zone.name,
+            "description": zone.description,
             "points": points
         })
 
