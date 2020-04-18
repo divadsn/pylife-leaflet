@@ -31,6 +31,12 @@ services:
     volumes:
       - postgres_vol:/var/lib/postgresql/data
 
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 127.0.0.1:8181:8080
+
 volumes:
   postgres_vol:
     driver: local
