@@ -15,7 +15,7 @@ services:
       SQLALCHEMY_DATABASE_URI: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}"
 
   cron:
-    image: divadsn/pylife-cron
+    build: https://github.com/divadsn/pylife-cron.git
     restart: always
     environment:
       TZ: ${TZ}
