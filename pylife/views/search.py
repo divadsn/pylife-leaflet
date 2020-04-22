@@ -10,7 +10,7 @@ mod = Blueprint("search", __name__)
 def search():
     query = request.args.get("q", "")
 
-    zones = Zone.query.filter(func.lower(Zone.name).like(func.lower(f"%{query}%"))).limit(10).all()
+    zones = Zone.query.filter(Zone.name.ilike(f"%{query}%")).limit(10).all()
     data = []
 
     for zone in zones:
