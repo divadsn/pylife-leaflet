@@ -33,6 +33,10 @@
             text-decoration: none;
             background-color: transparent;
         }
+
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 
     <title>Mapa Play Your Life</title>
@@ -85,7 +89,8 @@
             return [year, month, day].join('-');
         }
 
-        var popupText = '<dt>' + house.id  + '. ' + house.name + '</dt><dd>' + house.location + '</dd>';
+        // popup text based on ownership data
+        var popupText = '<dl><dt>' + house.id  + '. ' + house.name + '</dt><dd>' + house.location + '</dd>';
 
         if (house.owner) {
             popupText += '<dt><i class="fa fa-user fa-fw"></i> Właściciel:</dt><dd>' + house.owner + '</dd>' +
@@ -96,7 +101,7 @@
                 '<dt><i class="fa fa-money fa-fw"></i> Cena:</dt><dd>' + house.price + '€ za dobę</dd>';
         }
 
-        popupText += '<a href="http://panel.pylife.pl/domy/' + house.id + '" target="_blank">Sprawdź dom w panelu</a>';
+        popupText += '<dd><a href="http://panel.pylife.pl/domy/' + house.id + '" target="_blank">Sprawdź dom w panelu</a></dd></dl>';
 
         var marker = L.marker(rc.unproject([house.x, house.y]), {icon: getHouseIcon(house)});
         marker.bindPopup(popupText).addTo(map);
