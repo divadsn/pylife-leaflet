@@ -221,6 +221,9 @@ function showZoneOnMap(zone) {
     var polygon = layers.zones.getLayer(zone.layer);
     polygon.bindPopup(L.responsivePopup().setContent(getZonePopupText(zone)));
 
+    // close existing popups
+    map.closePopup();
+
     map.flyToBounds(polygon.getBounds());
     map.once('moveend', function() {
         polygon.addTo(map).openPopup();
