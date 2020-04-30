@@ -39,6 +39,9 @@ def main():
     # Saving new data to database
     db.session.commit()
 
+    # Fixing timestamp precision
+    db.engine.execute("ALTER TABLE houses ALTER last_update TYPE timestamp(0)")
+
 
 def is_float(value):
     try:
