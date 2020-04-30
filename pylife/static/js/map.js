@@ -85,6 +85,11 @@ function setupTypeahead() {
                 showZoneOnMap(zone);
             }
 
+            // close navbar on mobile devices
+            if ($('.navbar-collapse').hasClass('collapse show')) {
+                $('.navbar-collapse').collapse('hide');
+            }
+
             inputSearch.value = '';
             inputSearch.blur();
         }
