@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Blueprint, request, jsonify, abort
 
 from pylife.models import Zone, House, Blip, Event
@@ -31,7 +32,9 @@ def get_zones():
 
 @mod.route("houses", methods=["GET"])
 def get_houses():
-    houses = House.query.order_by(House.id).all()
+    last_update = request.args.get("lastUpdate", type=int, default=0)
+
+    houses = House.query.filter(House.last_update > datetime.utcfromtimestamp(last_update)).order_by(House.id).all()
     data = []
 
     is_raw = "raw" in request.args
