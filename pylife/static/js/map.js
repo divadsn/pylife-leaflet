@@ -128,7 +128,7 @@ function getZonePopupText(zone) {
         popupText += '<dd>Brak domów na wynajem!</dd>';
     }
 
-    popupText += '<dd><a href="./broker/' + zone.id + '" target="_blank">Sprawdź domy dostępne w biurze</a></dd></dl>';
+    popupText += '<dd><a href="./broker/?location=' + zone.name + '" target="_blank">Sprawdź domy dostępne w biurze</a></dd></dl>';
     return popupText;
 }
 
@@ -240,7 +240,6 @@ function loadData() {
         json.data.forEach(function(zone) {
             var layer = createZonePolygon(zone).addTo(layers.zones);
             markers.zones[zone.id] = {
-                id: zone.id,
                 name: zone.name,
                 description: zone.description,
                 layer: layers.zones.getLayerId(layer)
