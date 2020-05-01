@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask import Blueprint, request, jsonify, abort
+from sqlalchemy import func, or_
 
 from pylife.models import Zone, House, Blip, Event
 from pylife.utils import parse_zone
@@ -85,7 +86,7 @@ def get_blips():
 
 @mod.route("events", methods=["GET"])
 def get_events():
-    events = Event.query.order_by(Event.id).all()
+    events = Event.query.filter(or_(Event.end_date > func.now(), Event.end_date.is_(None))).order_by(Event.id).all()
     data = []
 
     is_raw = "raw" in request.args
