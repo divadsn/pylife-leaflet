@@ -1,5 +1,4 @@
 from flask import Blueprint, request, jsonify
-from sqlalchemy import func
 
 from pylife.models import Zone
 
