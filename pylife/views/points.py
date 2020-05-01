@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Blueprint, request, jsonify, abort
+from flask import Blueprint, request, jsonify
 from sqlalchemy import func, or_
 
 from pylife.models import Zone, House, Blip, Event
@@ -14,10 +14,6 @@ def get_zones():
     data = []
 
     is_raw = "raw" in request.args
-
-    if not zones:
-        # something is wrong with the database
-        return abort(503)
 
     for zone in zones:
         points = parse_zone(zone.points, is_raw)
@@ -39,10 +35,6 @@ def get_houses():
     data = []
 
     is_raw = "raw" in request.args
-
-    if not houses:
-        # something is wrong with the database
-        return abort(503)
 
     for house in houses:
         data.append({
@@ -68,10 +60,6 @@ def get_blips():
 
     is_raw = "raw" in request.args
 
-    if not blips:
-        # something is wrong with the database
-        return abort(503)
-
     for blip in blips:
         data.append({
             "id": blip.id,
@@ -90,10 +78,6 @@ def get_events():
     data = []
 
     is_raw = "raw" in request.args
-
-    if not events:
-        # something is wrong with the database
-        return abort(503)
 
     for event in events:
         data.append({
