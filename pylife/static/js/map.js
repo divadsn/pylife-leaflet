@@ -128,7 +128,7 @@ function getZonePopupText(zone) {
 
         var averagePrice = parseFloat(total / houses.length).toFixed(2);
         popupText += '<dt><i class="fa fa-home fa-fw"></i> Ilość domów:</dt><dd>' + available + '/' + houses.length + ' dostępne' +
-            '<dt><i class="fa fa-money fa-fw"></i> Średnia cena:</dt><dd>' + averagePrice + '€ za dobę</dd>';
+            '<dt><i class="fa fa-money fa-fw"></i> Średnia cena:</dt><dd>' + formatPrice(averagePrice) + '€ za dobę</dd>';
     } else {
         popupText += '<dd>Brak domów na wynajem!</dd>';
     }
@@ -143,7 +143,7 @@ function getHousePopupText(house) {
 
     if (house.owner) {
         popupText += '<dt><i class="fa fa-user fa-fw"></i> Właściciel:</dt><dd>' + house.owner + '</dd>' +
-            '<dt><i class="fa fa-money fa-fw"></i> Cena:</dt><dd>' + house.price + '€ za dobę</dd>' +
+            '<dt><i class="fa fa-money fa-fw"></i> Cena:</dt><dd>' + formatPrice(house.price) + '€ za dobę</dd>' +
             '<dt><i class="fa fa-calendar fa-fw"></i> Wynajęty do:</dt><dd>' + formatDate(house.expiry) + '</dd>';
     } else {
         popupText += '<dd>Do wynajęcia!<dd>' +
@@ -298,6 +298,11 @@ function checkVisibility(layer) {
             map.removeLayer(layer);
         }
     });
+}
+
+
+function formatPrice(price) {
+    return price.toString().replace('.', ',');
 }
 
 
