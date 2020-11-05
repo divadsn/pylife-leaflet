@@ -5,6 +5,8 @@ var rc = null;
 
 var layers = {};
 var markers = {};
+var removed_houses = [705, 706, 707, 708, 709, 710];
+
 var last_update = null;
 
 
@@ -98,7 +100,9 @@ function setupTypeahead() {
 
 
 function getHouseIcon(house) {
-    if (house.owner) {
+    if (removed_houses.includes(house.id)) {
+        return L.icon({iconUrl: './static/icons/Icon_99.png', iconSize: [16, 16]});
+    } else if (house.owner) {
         return L.icon({iconUrl: './static/icons/Icon_32.png', iconSize: [16, 16]});
     } else {
         return L.icon({iconUrl: './static/icons/Icon_31.png', iconSize: [16, 16]});
@@ -119,6 +123,10 @@ function getZonePopupText(zone) {
         var available = 0, total = 0;
 
         houses.forEach(function(house) {
+            if (removed_houses.includes(house.id)) {
+                return;
+            }
+
             if (house.owner === null) {
                 available++;
             }
@@ -141,16 +149,24 @@ function getZonePopupText(zone) {
 function getHousePopupText(house) {
     var popupText = '<dl><dt>' + house.id  + '. ' + house.name + '</dt><dd>' + house.location + '</dd>';
 
-    if (house.owner) {
-        popupText += '<dt><i class="fa fa-user fa-fw"></i> Właściciel:</dt><dd>' + house.owner + '</dd>' +
-            '<dt><i class="fa fa-money fa-fw"></i> Cena:</dt><dd>' + formatPrice(house.price) + '€ za dobę</dd>' +
-            '<dt><i class="fa fa-calendar fa-fw"></i> Wynajęty do:</dt><dd>' + formatDate(house.expiry) + '</dd>';
+    if (removed_houses.includes(house.id)) {
+        popupText += '<dd>Niedostępny do wynajęcia!<dd>';
+    } else if (house.owner) {
+        popupText += '<dt><i class="fa fa-user fa-fw"></i> Właściciel:</dt><dd>' + house.owner + '</dd>';
     } else {
-        popupText += '<dd>Do wynajęcia!<dd>' +
-            '<dt><i class="fa fa-money fa-fw"></i> Cena:</dt><dd>' + house.price + '€ za dobę</dd>';
+        popupText += '<dd>Do wynajęcia!<dd>';
     }
 
-    popupText += '<dd><a href="http://panel.pylife.pl/domy/' + house.id + '" target="_blank">Sprawdź dom w panelu</a></dd></dl>';
+    popupText += '<dt><i class="fa fa-money fa-fw"></i> Cena:</dt><dd>' + formatPrice(house.price) + '€ za dobę</dd>';
+
+    if (house.owner) {
+        popupText += '<dt><i class="fa fa-calendar fa-fw"></i> Wynajęty do:</dt><dd>' + formatDate(house.expiry) + '</dd>';
+    }
+
+    if (!removed_houses.includes(house.id)) {
+        popupText += '<dd><a href="http://panel.pylife.pl/domy/' + house.id + '" target="_blank">Sprawdź dom w panelu</a></dd></dl>';
+    }
+
     return popupText;
 }
 
