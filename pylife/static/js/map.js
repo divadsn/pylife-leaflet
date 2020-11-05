@@ -136,8 +136,7 @@ function getZonePopupText(zone) {
 
         var averagePrice = parseFloat(total / houses.length).toFixed(2);
         popupText += '<dt><i class="fa fa-home fa-fw"></i> Ilość domów:</dt><dd>' + available + '/' + houses.length + ' dostępne' +
-            '<dt><i class="fa fa-money fa-fw"></i> Średnia cena:</dt><dd>' + formatPrice(averagePrice) + '€ za dobę</dd>' +
-            '<dd><a href="./broker/?location=' + encodeURIComponent(zone.name) + '" target="_blank">Sprawdź domy dostępne w biurze</a></dd></dl>';
+            '<dt><i class="fa fa-money fa-fw"></i> Średnia cena:</dt><dd>' + formatPrice(averagePrice) + '€ za dobę</dd>';
     } else {
         popupText += '<dd>Brak domów na wynajem!</dd></dl>';
     }
@@ -163,10 +162,6 @@ function getHousePopupText(house) {
         popupText += '<dt><i class="fa fa-calendar fa-fw"></i> Wynajęty do:</dt><dd>' + formatDate(house.expiry) + '</dd>';
     }
 
-    if (!removed_houses.includes(house.id)) {
-        popupText += '<dd><a href="http://panel.pylife.pl/domy/' + house.id + '" target="_blank">Sprawdź dom w panelu</a></dd></dl>';
-    }
-
     return popupText;
 }
 
@@ -187,7 +182,6 @@ function getEventPopupText(event) {
         popupText += '</dd>';
     }
 
-    popupText += '<dd><a href="' + event.post_url + '" target="_blank">Sprawdź wydarzenie na forum</a></dl>';
     return popupText;
 }
 
