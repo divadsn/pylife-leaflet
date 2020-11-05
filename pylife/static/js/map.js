@@ -5,6 +5,8 @@ var rc = null;
 
 var layers = {};
 var markers = {};
+var removed_houses = [705, 706, 707, 708, 709, 710];
+
 var last_update = null;
 
 
@@ -24,7 +26,7 @@ function setupLeaflet() {
 
     // the tile layer containing the image generated with gdal2tiles.py
     L.tileLayer('./tiles/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="http://panel.pylife.pl/">Play Your Life</a>, Imagery &copy; <a href="http://ian-albert.com/games/grand_theft_auto_san_andreas_maps/">IanAlbert.com</a>',
+        attribution: 'Map data &copy; <a href="http://web.archive.org/web/http://panel.pylife.pl/">Play Your Life</a>, Imagery &copy; <a href="http://web.archive.org/web/http://ian-albert.com/games/grand_theft_auto_san_andreas_maps/">IanAlbert.com</a>',
         noWrap: true
     }).addTo(map);
 
@@ -98,7 +100,9 @@ function setupTypeahead() {
 
 
 function getHouseIcon(house) {
-    if (house.owner) {
+    if (removed_houses.includes(house.id)) {
+        return L.icon({iconUrl: './static/icons/Icon_99.png', iconSize: [16, 16]});
+    } else if (house.owner) {
         return L.icon({iconUrl: './static/icons/Icon_32.png', iconSize: [16, 16]});
     } else {
         return L.icon({iconUrl: './static/icons/Icon_31.png', iconSize: [16, 16]});
@@ -119,6 +123,10 @@ function getZonePopupText(zone) {
         var available = 0, total = 0;
 
         houses.forEach(function(house) {
+            if (removed_houses.includes(house.id)) {
+                return;
+            }
+
             if (house.owner === null) {
                 available++;
             }
@@ -128,8 +136,7 @@ function getZonePopupText(zone) {
 
         var averagePrice = parseFloat(total / houses.length).toFixed(2);
         popupText += '<dt><i class="fa fa-home fa-fw"></i> Ilość domów:</dt><dd>' + available + '/' + houses.length + ' dostępne' +
-            '<dt><i class="fa fa-money fa-fw"></i> Średnia cena:</dt><dd>' + formatPrice(averagePrice) + '€ za dobę</dd>' +
-            '<dd><a href="./broker/?location=' + encodeURIComponent(zone.name) + '" target="_blank">Sprawdź domy dostępne w biurze</a></dd></dl>';
+            '<dt><i class="fa fa-money fa-fw"></i> Średnia cena:</dt><dd>' + formatPrice(averagePrice) + '€ za dobę</dd>';
     } else {
         popupText += '<dd>Brak domów na wynajem!</dd></dl>';
     }
@@ -141,16 +148,20 @@ function getZonePopupText(zone) {
 function getHousePopupText(house) {
     var popupText = '<dl><dt>' + house.id  + '. ' + house.name + '</dt><dd>' + house.location + '</dd>';
 
-    if (house.owner) {
-        popupText += '<dt><i class="fa fa-user fa-fw"></i> Właściciel:</dt><dd>' + house.owner + '</dd>' +
-            '<dt><i class="fa fa-money fa-fw"></i> Cena:</dt><dd>' + formatPrice(house.price) + '€ za dobę</dd>' +
-            '<dt><i class="fa fa-calendar fa-fw"></i> Wynajęty do:</dt><dd>' + formatDate(house.expiry) + '</dd>';
+    if (removed_houses.includes(house.id)) {
+        popupText += '<dd>Niedostępny do wynajęcia!<dd>';
+    } else if (house.owner) {
+        popupText += '<dt><i class="fa fa-user fa-fw"></i> Właściciel:</dt><dd>' + house.owner + '</dd>';
     } else {
-        popupText += '<dd>Do wynajęcia!<dd>' +
-            '<dt><i class="fa fa-money fa-fw"></i> Cena:</dt><dd>' + house.price + '€ za dobę</dd>';
+        popupText += '<dd>Do wynajęcia!<dd>';
     }
 
-    popupText += '<dd><a href="http://panel.pylife.pl/domy/' + house.id + '" target="_blank">Sprawdź dom w panelu</a></dd></dl>';
+    popupText += '<dt><i class="fa fa-money fa-fw"></i> Cena:</dt><dd>' + formatPrice(house.price) + '€ za dobę</dd>';
+
+    if (house.owner) {
+        popupText += '<dt><i class="fa fa-calendar fa-fw"></i> Wynajęty do:</dt><dd>' + formatDate(house.expiry) + '</dd>';
+    }
+
     return popupText;
 }
 
@@ -171,7 +182,6 @@ function getEventPopupText(event) {
         popupText += '</dd>';
     }
 
-    popupText += '<dd><a href="' + event.post_url + '" target="_blank">Sprawdź wydarzenie na forum</a></dl>';
     return popupText;
 }
 
