@@ -26,7 +26,7 @@ function setupLeaflet() {
 
     // the tile layer containing the image generated with gdal2tiles.py
     L.tileLayer('./tiles/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="http://panel.pylife.pl/">Play Your Life</a>, Imagery &copy; <a href="http://ian-albert.com/games/grand_theft_auto_san_andreas_maps/">IanAlbert.com</a>',
+        attribution: 'Map data &copy; <a href="http://web.archive.org/web/http://panel.pylife.pl/">Play Your Life</a>, Imagery &copy; <a href="http://web.archive.org/web/http://ian-albert.com/games/grand_theft_auto_san_andreas_maps/">IanAlbert.com</a>',
         noWrap: true
     }).addTo(map);
 
